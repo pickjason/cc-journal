@@ -6,7 +6,7 @@
 
 [English docs →](README.md)
 
-![Dashboard](https://raw.githubusercontent.com/pickjason/journal/main/docs/screenshot.png)
+![Dashboard](https://raw.githubusercontent.com/pickjason/cc-journal/main/docs/screenshot.png)
 
 ## 快速开始
 

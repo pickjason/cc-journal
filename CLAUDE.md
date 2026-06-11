@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目
 
-**cc-journal**(npm 包名;仓库名 journal)— Claude Code 使用统计与日报工具:解析本地 `~/.claude/projects/**/*.jsonl` 会话记录(完全离线,不上传),统计每天的会话数/指令数/token 消耗,提供 GitHub 风格热力图 Dashboard 与"每天干了什么"日报(规则提取 + 可选本机 `claude -p` 浓缩)。Node 20+ / TypeScript / 零框架前端(原生 JS + ECharts 本地 vendor,无 CDN),唯一运行时依赖 `commander`。开源(MIT),目标使用方式 `npx cc-journal serve`。
+**cc-journal**(npm 包名;仓库 pickjason/cc-journal)— Claude Code 使用统计与日报工具:解析本地 `~/.claude/projects/**/*.jsonl` 会话记录(完全离线,不上传),统计每天的会话数/指令数/token 消耗,提供 GitHub 风格热力图 Dashboard 与"每天干了什么"日报(规则提取 + 可选本机 `claude -p` 浓缩)。Node 20+ / TypeScript / 零框架前端(原生 JS + ECharts 本地 vendor,无 CDN),唯一运行时依赖 `commander`。开源(MIT),目标使用方式 `npx cc-journal serve`。
 
 ## 命令
 

@@ -21,10 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pickjason/journal.git"
+    "url": "git+https://github.com/pickjason/cc-journal.git"
   },
-  "homepage": "https://github.com/pickjason/journal#readme",
-  "bugs": "https://github.com/pickjason/journal/issues",
+  "homepage": "https://github.com/pickjason/cc-journal#readme",
+  "bugs": "https://github.com/pickjason/cc-journal/issues",
   "keywords": [
     "claude-code",
     "claude",

@@ -6,7 +6,7 @@
 
 [中文文档 →](README.zh-CN.md)
 
-![Dashboard](https://raw.githubusercontent.com/pickjason/journal/main/docs/screenshot.png)
+![Dashboard](https://raw.githubusercontent.com/pickjason/cc-journal/main/docs/screenshot.png)
 
 ## Quick Start
 
