@@ -1,0 +1,174 @@
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --green: #39d353;
+  --accent: #58a6ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  padding: 20px 28px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+h1 { font-size: 22px; margin-bottom: 10px; }
+h2 { font-size: 15px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.chip {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.chip b { color: var(--text); margin-right: 4px; }
+
+.controls { display: flex; gap: 14px; align-items: center; color: var(--muted); }
+
+select {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.chart { width: 100%; }
+
+.day-summary { color: var(--muted); margin-bottom: 14px; font-size: 13px; }
+.day-summary b { color: var(--text); }
+
+.session-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: var(--bg);
+}
+
+.session-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.session-time { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+.project-badge {
+  background: rgba(88, 166, 255, 0.15);
+  color: var(--accent);
+  border-radius: 5px;
+  padding: 1px 8px;
+  font-size: 12px;
+}
+
+.session-title { font-size: 14px; line-height: 1.5; margin-bottom: 6px; word-break: break-all; }
+
+.session-stats { color: var(--muted); font-size: 12px; }
+
+.empty { color: var(--muted); padding: 18px 0; text-align: center; }
+
+.day-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-top: 6px;
+}
+@media (max-width: 900px) { .day-grid { grid-template-columns: 1fr; } }
+
+.col-title {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0 0 10px;
+  height: 28px;
+  line-height: 28px;
+}
+
+.report-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.report-head .col-title { margin: 0; }
+
+.btn {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn:disabled { opacity: 0.5; cursor: wait; }
+
+#report-status { color: var(--muted); font-size: 12px; }
+
+.report-box {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  border-radius: 8px;
+  background: var(--bg);
+  padding: 14px 18px;
+  line-height: 1.7;
+  font-size: 13px;
+}
+.report-box:empty { display: none; }
+.report-box h3 { font-size: 15px; color: var(--text); margin: 4px 0 8px; }
+.report-box h4 { font-size: 14px; color: var(--accent); margin: 12px 0 4px; }
+.report-box h5 { font-size: 13px; color: var(--text); margin: 8px 0 2px; }
+.report-box blockquote {
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+  padding-left: 10px;
+  margin: 2px 0;
+}
+.report-box ul { padding-left: 20px; margin: 4px 0; }
+.report-box hr { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
+.report-box p { margin: 6px 0; }
+
+footer { color: var(--muted); font-size: 12px; text-align: center; padding: 14px 0 6px; }

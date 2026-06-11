@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Code Journal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>Claude Code Journal</h1>
+      <div id="chips" class="chips"></div>
+    </div>
+    <div class="controls">
+      <label><span id="lbl-year">年份</span> <select id="year-select"></select></label>
+      <label><span id="lbl-metric">热力图指标</span> <select id="metric-select"></select></label>
+      <select id="lang-select" title="Language">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="heatmap-panel">
+      <h2 id="heatmap-title">活跃热力图</h2>
+      <div id="heatmap" class="chart" style="height: 200px"></div>
+    </section>
+
+    <div class="grid-2">
+      <section class="panel">
+        <h2 id="h2-trend">每日 token 趋势</h2>
+        <div id="trend" class="chart" style="height: 300px"></div>
+      </section>
+      <section class="panel">
+        <h2 id="h2-hours">时段分布</h2>
+        <div id="hours" class="chart" style="height: 300px"></div>
+      </section>
+      <section class="panel">
+        <h2 id="h2-projects">项目排行</h2>
+        <div id="projects" class="chart" style="height: 340px"></div>
+      </section>
+      <section class="panel">
+        <h2 id="h2-models">模型分布</h2>
+        <div id="models" class="chart" style="height: 340px"></div>
+      </section>
+    </div>
+
+    <section class="panel">
+      <h2 id="day-title">当日明细</h2>
+      <div id="day-summary" class="day-summary"></div>
+      <div class="day-grid">
+        <div>
+          <div class="report-head">
+            <h3 id="report-title" class="col-title">日报</h3>
+            <button id="btn-llm" class="btn"></button>
+            <span id="report-status"></span>
+          </div>
+          <div id="day-report" class="report-box"></div>
+        </div>
+        <div>
+          <h3 id="sessions-title" class="col-title"></h3>
+          <div id="day-sessions"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer-note"></footer>
+
+  <script src="vendor/echarts.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
