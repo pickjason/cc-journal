@@ -74,6 +74,9 @@ Claude Code 会清理旧记录(`~/.claude/settings.json` 的 `cleanupPeriodDays`
 **我的数据存在哪?**
 `~/.claude-journal/`(缓存 + 生成的日报)。随时可删;除已被清理的历史外,下次运行会全部重建。
 
+**怎么停止 Dashboard?**
+在运行 `serve` 的终端按 `Ctrl+C`(关浏览器页面不会停服务)。如果终端已经关了服务还在跑:`lsof -ti:3777 | xargs kill`。
+
 ## 许可
 
 [MIT](LICENSE)

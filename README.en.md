@@ -74,6 +74,9 @@ Claude Code cleans up old transcripts (`cleanupPeriodDays` in `~/.claude/setting
 **Where is my data stored?**
 `~/.claude-journal/` (cache + generated reports). Delete it any time; everything except cleaned-up history is rebuilt on the next run.
 
+**How do I stop the dashboard?**
+Press `Ctrl+C` in the terminal running `serve` (closing the browser tab doesn't stop the server). If the terminal is gone and the server is still running: `lsof -ti:3777 | xargs kill`.
+
 ## License
 
 [MIT](LICENSE)
