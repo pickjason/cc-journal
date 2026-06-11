@@ -2,78 +2,78 @@
 
 [![npm](https://img.shields.io/npm/v/cc-journal)](https://www.npmjs.com/package/cc-journal) [![license](https://img.shields.io/npm/l/cc-journal)](LICENSE) [![node](https://img.shields.io/node/v/cc-journal)](https://nodejs.org)
 
-> Local analytics & daily journal for [Claude Code](https://claude.com/claude-code) — sessions, token usage, a GitHub-style heatmap dashboard, and "what did I do today" reports.
+> [Claude Code](https://claude.com/claude-code) 使用统计与日报工具——会话数、token 消耗、GitHub 风格活跃热力图,以及"我今天干了什么"日报。
 
-**🔒 100% local & offline.** It parses the session transcripts Claude Code already keeps on your machine (`~/.claude/projects/**/*.jsonl`). Nothing is uploaded, no API key is required, no telemetry.
+**🔒 100% 本地离线。** 解析的是 Claude Code 本来就存在你机器上的会话记录(`~/.claude/projects/**/*.jsonl`),不上传任何数据、不需要 API key、无遥测。
 
-[中文文档 →](README.zh-CN.md)
+[English docs →](README.en.md)
 
 ![Dashboard](https://raw.githubusercontent.com/pickjason/cc-journal/main/docs/screenshot.png)
 
-## Quick Start
+## 快速开始
 
 ```bash
 npx cc-journal serve
 ```
 
-That's it — your dashboard opens at `http://localhost:3777`. First run parses all transcripts (a few seconds); afterwards refreshes are incremental and instant.
+就这一条——Dashboard 自动在 `http://localhost:3777` 打开。首次运行全量解析(几秒钟),之后增量刷新秒级完成。
 
-Or install globally:
+或全局安装:
 
 ```bash
 npm i -g cc-journal
 journal serve
 ```
 
-## Features
+## 功能
 
-- **Activity heatmap** — GitHub-style yearly calendar; switch metric between total tokens / output tokens / sessions / prompts; click any day for details
-- **Daily token trend** — input / output / cache-write / cache-read as stacked bars (cache series hidden by default — they're ~100× larger and would flatten everything else)
-- **Hourly activity** — see when you actually work
-- **Top projects & model breakdown** — by output tokens
-- **Day detail** — every session with time range, project, first prompt, and token cost
-- **Daily reports** — rule-based extraction of what you did each day (free, instant), plus an optional **LLM-condensed version** generated through your local `claude` CLI (uses your existing subscription; no API key). LLM reports are cached per day
-- **Bilingual UI** — English / 中文, auto-detected, switchable, `?lang=en|zh`
+- **活跃热力图** —— GitHub 风格年度日历,指标可切换(总 tokens / 输出 tokens / 会话数 / 指令数),点击某天看明细
+- **每日 token 趋势** —— 输入 / 输出 / cache 创建 / cache 读取 堆叠柱状图(cache 量级约大 100 倍,默认隐藏,图例可开)
+- **时段分布** —— 看你一天中几点最肝
+- **项目排行 / 模型分布** —— 按输出 tokens
+- **当日明细** —— 每个会话的时间段、项目、首条指令、token 消耗
+- **日报** —— 规则提取当天干了什么(即时、零成本);可选 **LLM 浓缩版**,通过本机 `claude` CLI 生成(走你现有的订阅,不用配 API key),按天缓存
+- **中英文界面** —— 自动检测、可切换、支持 `?lang=zh|en`
 
-## Commands
+## 命令
 
 ```bash
-journal serve   [--port 3777] [--no-open]          # local dashboard
-journal stats   [--days 30]                        # terminal overview
-journal summary [--date YYYY-MM-DD] [--llm] [--model haiku]   # daily report
-journal refresh                                    # update the parse cache
-# global: --lang zh|en · --claude-dir <dir> · --data-dir <dir>
+journal serve   [--port 3777] [--no-open]          # 本地 Dashboard
+journal stats   [--days 30]                        # 终端速览
+journal summary [--date YYYY-MM-DD] [--llm] [--model haiku]   # 日报
+journal refresh                                    # 更新解析缓存
+# 全局选项:--lang zh|en · --claude-dir <dir> · --data-dir <dir>
 ```
 
-## How it works
+## 工作原理
 
-- Reads `~/.claude/projects/**/*.jsonl` (including subagent transcripts under `<session>/subagents/`), streaming line by line.
-- Parsed results are cached in `~/.claude-journal/` with incremental updates (file size + mtime). **History accumulates**: Claude Code deletes transcripts older than 30 days by default (`cleanupPeriodDays`), but cc-journal keeps the parsed history of deleted files, so your heatmap keeps growing from the day you first run it.
-- The dashboard is a single static page + tiny JSON API on `127.0.0.1` — no framework, no build step at runtime, ECharts bundled locally (no CDN).
+- 流式逐行解析 `~/.claude/projects/**/*.jsonl`(含 `<session>/subagents/` 下的子代理转录)。
+- 解析结果缓存在 `~/.claude-journal/`,按文件 size + mtime 增量更新。**历史长期积累**:Claude Code 默认 30 天清理旧记录(`cleanupPeriodDays`),但 cc-journal 会保留已清理文件的解析历史——从你首次运行那天起,热力图只增不减。
+- Dashboard 是单个静态页 + 极简 JSON API,只监听 `127.0.0.1`;无框架、运行时无构建,ECharts 本地打包(不依赖 CDN)。
 
-## Accuracy notes
+## 统计口径
 
-Numbers are easy to get wrong with Claude Code transcripts. cc-journal:
+Claude Code 的会话记录很容易统计出错,cc-journal 的处理:
 
-- counts **input / output / cache-creation / cache-read tokens separately** (mixing them inflates totals ~100×);
-- dedupes usage by `message.id + requestId` — one API response spans multiple transcript lines, each repeating the full usage block;
-- dedupes globally across files — forked/resumed sessions copy history;
-- counts subagent usage into totals but **not** as separate sessions;
-- counts only human prompts (filters command echoes, hook outputs, tool results);
-- buckets days/hours in **your local timezone**;
-- excludes its own LLM-report sessions (tagged `[journal-summary]`) so the tool doesn't pollute its own stats.
+- **input / output / cache 创建 / cache 读取四项分开统计**(混算会虚高约 100 倍);
+- 按 `message.id + requestId` 去重——一次 API 响应在记录里占多行,每行都带完整 usage;
+- 跨文件全局去重——fork / resume 会复制历史记录;
+- 子代理用量计入总量,但**不算**独立会话;
+- 只统计人工输入的指令(过滤命令回显、hook 输出、工具结果);
+- 按**本地时区**归天/归小时;
+- 排除本工具自身生成日报产生的会话(`[journal-summary]` 标记),不污染统计。
 
-## FAQ
+## 常见问题
 
-**Do I need the `claude` CLI?**
-Only for `--llm` reports. Everything else works standalone.
+**需要安装 `claude` CLI 吗?**
+只有 `--llm` 日报需要,其他功能完全独立。
 
-**Why does my data only go back ~30 days at first?**
-Claude Code cleans up old transcripts (`cleanupPeriodDays` in `~/.claude/settings.json`). From your first run onward, cc-journal preserves parsed history even after the source files are cleaned.
+**为什么我的数据一开始只有最近 30 天?**
+Claude Code 会清理旧记录(`~/.claude/settings.json` 的 `cleanupPeriodDays`)。从首次运行起,cc-journal 会在源文件被清理后保留已解析的历史。
 
-**Where is my data stored?**
-`~/.claude-journal/` (cache + generated reports). Delete it any time; everything except cleaned-up history is rebuilt on the next run.
+**我的数据存在哪?**
+`~/.claude-journal/`(缓存 + 生成的日报)。随时可删;除已被清理的历史外,下次运行会全部重建。
 
-## License
+## 许可
 
 [MIT](LICENSE)

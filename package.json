@@ -10,7 +10,7 @@
   "files": [
     "dist",
     "web",
-    "README.zh-CN.md"
+    "README.en.md"
   ],
   "scripts": {
     "build": "tsc && node scripts/copy-vendor.mjs",

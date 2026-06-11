@@ -73,4 +73,4 @@ npx tsx src/cli.ts summary [--date YYYY-MM-DD] [--llm] [--model haiku]
 
 ## 文档地图
 
-`README.md`(英文,面向开源用户,首屏 npx + 截图 + 隐私声明)· `README.zh-CN.md`(中文版,内容对齐)· `docs/screenshot.png`(README 配图,Chrome headless 截取)· `docs/progress/`(每日工作日志)· 本文件(面向开发,架构与红线)。两份 README 改动须同步。
+`README.md`(中文,默认展示,首屏 npx + 截图 + 隐私声明)· `README.en.md`(英文版,内容对齐)· `docs/screenshot.png`(README 配图,Chrome headless 截取)· `docs/progress/`(每日工作日志)· 本文件(面向开发,架构与红线)。两份 README 改动须同步。
