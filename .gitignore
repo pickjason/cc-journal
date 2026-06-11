@@ -3,5 +3,6 @@ dist/
 data/
 web/vendor/
 docs/progress/
+CLAUDE.md
 .DS_Store
 *.log
