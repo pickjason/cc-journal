@@ -1,5 +1,7 @@
 # Claude Code Journal
 
+[![npm](https://img.shields.io/npm/v/cc-journal)](https://www.npmjs.com/package/cc-journal) [![license](https://img.shields.io/npm/l/cc-journal)](LICENSE) [![node](https://img.shields.io/node/v/cc-journal)](https://nodejs.org)
+
 > [Claude Code](https://claude.com/claude-code) 使用统计与日报工具——会话数、token 消耗、GitHub 风格活跃热力图,以及"我今天干了什么"日报。
 
 **🔒 100% 本地离线。** 解析的是 Claude Code 本来就存在你机器上的会话记录(`~/.claude/projects/**/*.jsonl`),不上传任何数据、不需要 API key、无遥测。

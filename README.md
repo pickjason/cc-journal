@@ -1,5 +1,7 @@
 # Claude Code Journal
 
+[![npm](https://img.shields.io/npm/v/cc-journal)](https://www.npmjs.com/package/cc-journal) [![license](https://img.shields.io/npm/l/cc-journal)](LICENSE) [![node](https://img.shields.io/node/v/cc-journal)](https://nodejs.org)
+
 > Local analytics & daily journal for [Claude Code](https://claude.com/claude-code) — sessions, token usage, a GitHub-style heatmap dashboard, and "what did I do today" reports.
 
 **🔒 100% local & offline.** It parses the session transcripts Claude Code already keeps on your machine (`~/.claude/projects/**/*.jsonl`). Nothing is uploaded, no API key is required, no telemetry.
