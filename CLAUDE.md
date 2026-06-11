@@ -68,9 +68,9 @@ npx tsx src/cli.ts summary [--date YYYY-MM-DD] [--llm] [--model haiku]
 - **改 `ParsedFile` 结构必须 bump `CACHE_VERSION`**(cache.ts),否则旧缓存结构错乱;bump 后全量重建,已被清理的源文件历史会丢——结构变更要慎重,最好向后兼容。
 - **LLM 日报 prompt 必须保持 `[journal-summary]` 开头**(summary.ts),去掉会让工具自己产生的会话污染统计。
 - LLM 调用走本机 `claude` CLI(订阅),**不直连 API、不引 SDK、不配 key**;默认模型 `haiku`。
-- **每日工作日志**:写到 `docs/progress/YYYY-MM-DD-<主题>.md`(每主题一文件 + day-summary),禁放密钥/凭据。
+- **每日工作日志**:写到 `docs/progress/YYYY-MM-DD-<主题>.md`(每主题一文件 + day-summary),禁放密钥/凭据。**仅本地保留,已 gitignore,不推送到公开仓库**。
 - 生成文档**只用源码中真实存在的术语**(会话/指令/规则日报/LLM 日报/子代理…),不编造业务名词。
 
 ## 文档地图
 
-`README.md`(中文,默认展示,首屏 npx + 截图 + 隐私声明)· `README.en.md`(英文版,内容对齐)· `docs/screenshot.png`(README 配图,Chrome headless 截取)· `docs/progress/`(每日工作日志)· 本文件(面向开发,架构与红线)。两份 README 改动须同步。
+`README.md`(中文,默认展示,首屏 npx + 截图 + 隐私声明)· `README.en.md`(英文版,内容对齐)· `docs/screenshot.png`(README 配图,Chrome headless 截取)· `docs/progress/`(每日工作日志,仅本地不入库)· 本文件(面向开发,架构与红线)。两份 README 改动须同步。
